@@ -1,0 +1,150 @@
+{% extends "inventory_app/base.html" %}
+
+{% block title %}Crear Pedido{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<h1>Crear Pedido</h1>
+
+<form method="post">
+  {% csrf_token %}
+  <label for="id_client_name">Nombre del Cliente:</label>
+  {{ form.client_name }}
+
+  {{ formset.management_form }}
+  <div id="order-items">
+    {% for form in formset %}
+      <div class="form-row">
+        {{ form.item.label_tag }} {{ form.item }}
+        {{ form.quantity.label_tag }} {{ form.quantity }}
+        <button type="button" class="remove-item">🗑️ Borrar</button>
+      </div>
+    {% endfor %}
+  </div>
+
+  <button type="button" id="add-item">➕ Agregar Producto</button>
+  <br><br>
+  <button type="submit">🛒 Crear Pedido</button>
+</form>
+
+<!-- Hidden empty form template -->
+<div id="empty-form" style="display: none;">
+  <div class="form-row">
+    {{ formset.empty_form.item.label_tag }} {{ formset.empty_form.item }}
+    {{ formset.empty_form.quantity.label_tag }} {{ formset.empty_form.quantity }}
+    <button type="button" class="remove-item">🗑️ Borrar</button>
+  </div>
+</div>
+
+<p>Total: $<span id="order-total">0.00</span></p>
+
+<script>
+  const orderItemsDiv = document.getElementById('order-items');
+  const addItemButton = document.getElementById('add-item');
+  let formIndex = {{ formset.total_form_count }};
+
+  // Update management form TOTAL_FORMS value
+  function updateTotalForms() {
+    document.getElementById('id_form-TOTAL_FORMS').value = formIndex;
+  }
+
+  // Add data-price attributes to select options
+  function addDataPrices() {
+    const itemPrices = {
+      {% for item in items %}
+        '{{ item.pk }}': '{{ item.price }}',
+      {% endfor %}
+    };
+
+    document.querySelectorAll('select[name$="-item"]').forEach(select => {
+      for (let option of select.options) {
+        const price = itemPrices[option.value];
+        if (price !== undefined) {
+          option.setAttribute('data-price', price);
+        }
+      }
+    });
+  }
+
+  // Calculate and update total price
+  function updateTotal() {
+    let total = 0;
+    document.querySelectorAll('#order-items .form-row').forEach(row => {
+      const itemSelect = row.querySelector('select');
+      const qtyInput = row.querySelector('input[type="number"]');
+      if (!itemSelect || !qtyInput) return;
+
+      const selectedOption = itemSelect.options[itemSelect.selectedIndex];
+      const price = parseFloat(selectedOption.dataset.price || 0);
+      const qty = parseInt(qtyInput.value) || 0;
+
+      total += price * qty;
+    });
+    document.getElementById('order-total').textContent = total.toFixed(2);
+  }
+
+  // Attach change/input listeners to all selects and quantity inputs
+  function attachListeners() {
+    document.querySelectorAll('#order-items select, #order-items input[type="number"]').forEach(el => {
+      el.removeEventListener('change', updateTotal);
+      el.removeEventListener('input', updateTotal);
+      el.addEventListener('change', updateTotal);
+      el.addEventListener('input', updateTotal);
+    });
+  }
+
+  // Attach listeners to remove buttons to delete forms dynamically
+  function attachRemoveListeners() {
+    document.querySelectorAll('.remove-item').forEach(button => {
+      button.removeEventListener('click', handleRemove);
+      button.addEventListener('click', handleRemove);
+    });
+  }
+
+  function handleRemove(event) {
+    event.target.parentElement.remove();
+    formIndex--;
+    updateTotalForms();
+    addDataPrices();  // Ensure remaining selects keep their data-price
+    updateTotal();
+  }
+
+  // Create a new form row from the hidden empty form template
+  function createFormRow() {
+    const emptyFormHtml = document.getElementById('empty-form').innerHTML.replace(/__prefix__/g, formIndex);
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = emptyFormHtml;
+    const newFormRow = tempDiv.firstElementChild;
+
+    orderItemsDiv.appendChild(newFormRow);
+    formIndex++;
+    updateTotalForms();
+    addDataPrices();
+    attachListeners();
+    attachRemoveListeners();
+    updateTotal();
+  }
+
+  // Initial setup
+  updateTotalForms();
+  addDataPrices();          // <-- ensure initial selects get data-price
+  attachListeners();
+  attachRemoveListeners();
+  updateTotal();
+
+  // Add item button listener
+  addItemButton.addEventListener('click', createFormRow);
+</script>
+
+
+<a href="{% url 'item_list' %}" class="btn">← Vuelta a Inventario</a>
+
+{% endblock %}

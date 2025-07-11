@@ -1,0 +1,28 @@
+{% extends "inventory_app/base.html" %}
+
+{% block title %}Inventory{% endblock %}
+
+{% block content %}
+
+<h1>Pedidos</h1>
+
+<a href="{% url 'order_create' %}" class="btn">Crear nuevo pedido</a> |
+<a href="{% url 'item_list' %}" class="btn">← Vuelta a Inventario</a>
+
+<ul>
+  {% for order in orders %}
+  <li>
+    <a href="{% url 'order_detail' order.pk %}">
+      Order #{{ order.id }} — {{ order.client.name }} — {{ order.created_at|date:"Y-m-d H:i" }}
+
+      <a href="{% url 'order_delete' order.pk %}" class="btn btn-danger"
+        onclick="return confirm('Are you sure you want to delete this order?');">
+        Delete Order
+      </a>
+    </a>
+  </li>
+  {% empty %}
+  <li>Aun no hay pedidos.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

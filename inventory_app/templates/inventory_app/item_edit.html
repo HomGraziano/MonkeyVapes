@@ -1,0 +1,16 @@
+{% extends "inventory_app/base.html" %}
+
+{% block title %}Editar Item{% endblock %}
+
+{% block content %}
+
+<h1>Edit Item: {{ item.name }}</h1>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save Changes</button>
+</form>
+
+<a href="{% url 'item_list' %}" class="btn">← Back to Inventory</a>
+{% endblock %}

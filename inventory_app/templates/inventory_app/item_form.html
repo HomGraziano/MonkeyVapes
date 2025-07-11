@@ -1,0 +1,14 @@
+{% extends "inventory_app/base.html" %}
+
+{% block title %}Administracion de Items{% endblock %}
+
+{% block content %}
+
+
+<h1>Crear Producto</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn" type="submit">Guardar</button> | <a href="{% url 'item_list' %}" class="btn">← Vuelta a Inventario</a>
+</form>
+{% endblock %}

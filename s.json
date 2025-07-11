@@ -1,0 +1,306 @@
+{
+    "rules_a": {
+        "prepaid": {
+            "total_paid": "full",
+            "payment_type": "PrePaid - Movis",
+            "reference": "PrePaid - Movis"
+        },
+        "pay on arrival": {},
+        "partially paid with add-ons": {
+            "total_paid": "partial",
+            "payment_type": "PrePaid - Movis"
+        }
+    },
+    "brand_id": 1,
+    "locations": {},
+    "forced_fees": {
+        "abb_tax": 0,
+        "location_fee": 0,
+        "government_tax": "0"
+    },
+    "payment_type": "PrePaid - Movis",
+    "vehicle_classes": {
+        "ccar": 6,
+        "ccav": 6,
+        "cdar": 6,
+        "cdav": 6,
+        "cfar": 13,
+        "cfav": 13,
+        "cgar": 13,
+        "cgav": 13,
+        "ecar": 12,
+        "ecav": 12,
+        "edar": 12,
+        "edav": 12,
+        "fcar": 2,
+        "fcav": 2,
+        "fdar": 2,
+        "fdav": 2,
+        "ffar": 8,
+        "ffav": 8,
+        "icar": 3,
+        "icav": 3,
+        "idar": 3,
+        "idav": 3,
+        "ifar": 1,
+        "ifav": 1,
+        "mcar": 14,
+        "mcav": 14,
+        "mdar": 14,
+        "mdav": 14,
+        "sfar": 7,
+        "sfav": 7,
+        "star": 10,
+        "stav": 10
+    },
+    "mandatory_additional_charges": [
+        {
+            "id": "1",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "2",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "3",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "4",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "5",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "6",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "7",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "8",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "9",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "10",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "11",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "12",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "13",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "14",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "15",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "16",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "17",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "18",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "19",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "20",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "21",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "22",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "23",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "24",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "25",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "26",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "27",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "28",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "29",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "30",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "31",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "32",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "33",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "34",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "35",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "36",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "37",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "38",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "39",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "40",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        },
+        {
+            "id": "41",
+            "amount": 0,
+            "quantity": "1",
+            "only_if_added": true
+        }
+    ],
+    "additional_charge_for_adjustments": "42",
+    "refund_pre_payments_on_cancellations": true
+}
